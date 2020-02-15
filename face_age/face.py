@@ -5,16 +5,6 @@ import imutils
 import time
 import cv2
 
-# construct the argument parse and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--input", type=str, default="",
-    help="path to (optional) input video file")
-ap.add_argument("-o", "--output", type=str, default="",
-    help="path to (optional) output video file")
-ap.add_argument("-u", "--use-gpu", type=bool, default=False,
-    help="boolean indicating if CUDA GPU should be used")
-args = vars(ap.parse_args())
-
 def worker():
     # initialize the list of class labels
     CLASSES = [str(i) for i in range(1,101)]
@@ -101,4 +91,13 @@ def worker():
     print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))    
 
 if __name__ == "__main__":
+    # construct the argument parse and parse the arguments
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-i", "--input", type=str, default="",
+        help="path to (optional) input video file")
+    ap.add_argument("-o", "--output", type=str, default="",
+        help="path to (optional) output video file")
+    ap.add_argument("-u", "--use-gpu", type=bool, default=False,
+        help="boolean indicating if CUDA GPU should be used")
+    args = vars(ap.parse_args())
     worker()
